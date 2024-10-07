@@ -7,11 +7,38 @@ namespace Codigos247
     {
         public static void Main(string[] args)
         {
-            int[] numeros = GenerarNumerosAleatorios(10, 0, 15);
+            int[] numeros;
             List<int> numerosPrimos = new List<int>();
             List<int> numerosNoPrimos = new List<int>();
 
-            Console.WriteLine("Números generados:");
+            string opcion;
+            do
+            {
+                Console.Clear();
+                Console.WriteLine("Seleccione una opción:");
+                Console.WriteLine("1: Generar 10 números aleatorios.");
+                Console.WriteLine("2: Ingresar 10 números manualmente.\n");
+                Console.Write("Ingrese su opción: ");
+                opcion = Console.ReadLine();
+
+                if (opcion != "1" && opcion != "2")
+                {
+                    Console.WriteLine("Opción no válida. Presione cualquier tecla para intentar de nuevo...");
+                    Console.ReadKey();
+                }
+
+            } while (opcion != "1" && opcion != "2");
+
+            if (opcion == "1")
+            {
+                numeros = GenerarNumerosAleatorios(10, 0, 15);
+            }
+            else
+            {
+                numeros = IngresarNumerosManual(10, 0, 15);
+            }
+
+            Console.WriteLine("\nNúmeros generados:");
             MostrarArreglo(numeros);
 
             foreach (int num in numeros)
@@ -34,6 +61,30 @@ namespace Codigos247
 
             Console.WriteLine("\nPresiona cualquier tecla para cerrar el programa...");
             Console.ReadKey();
+        }
+
+        public static int[] IngresarNumerosManual(int cantidad, int min, int max)
+        {
+            int[] numeros = new int[cantidad];
+            for (int i = 0; i < cantidad; i++)
+            {
+                int numero;
+                do
+                {
+                    Console.Write($"Ingrese el número {i + 1} (entre {min} y {max}): ");
+                    if (!int.TryParse(Console.ReadLine(), out numero) || numero < min || numero > max)
+                    {
+                        Console.WriteLine("Número inválido. Intente de nuevo.");
+                    }
+                    else
+                    {
+                        break;
+                    }
+                } while (true);
+
+                numeros[i] = numero;
+            }
+            return numeros;
         }
 
         public static int[] GenerarNumerosAleatorios(int cantidad, int min, int max)

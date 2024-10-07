@@ -5,10 +5,9 @@ namespace Codigos247
     public abstract class Vehiculo
     {
         public string Modelo { get; set; }
-        public float CapacidadCombustible { get; set; }
-        public float Velocidad { get; set; }
+        public int CapacidadCombustible { get; set; }
+        public int Velocidad { get; set; }
         public int CantidadPasajeros { get; set; }
-
         public abstract void Acelerar();
         public abstract void Desacelerar();
     }
@@ -38,7 +37,7 @@ namespace Codigos247
 
     public class Avioneta : Vehiculo
     {
-        public float MaxAltitud { get; set; }
+        public int MaxAltitud { get; set; }
         public int NumeroMotores { get; set; }
 
         public override void Acelerar()

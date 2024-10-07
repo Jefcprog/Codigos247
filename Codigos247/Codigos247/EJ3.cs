@@ -24,19 +24,16 @@ namespace Codigos247
                 NumeroMotores = 2
             };
 
-            // Probar los métodos del bus
             bus.Acelerar();
             bus.Desacelerar();
             bus.GirarIzq();
             bus.GirarDer();
 
-            // Probar los métodos de la avioneta
             avioneta.Acelerar();
             avioneta.Desacelerar();
             avioneta.Ascender();
             avioneta.Descender();
 
-            // Esperar a que el usuario presione una tecla para cerrar
             Console.WriteLine("Presiona cualquier tecla para salir...");
             Console.ReadKey();
         }
